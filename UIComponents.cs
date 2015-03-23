@@ -9,7 +9,7 @@ namespace ChatUI
 {
     public static class UIComponents
     {
-        #region Rounded Rectangles (not my code)
+        #region Rounded Rectangles (Credits to Joe Coolish for this code)
 
         public enum RoundedCorners
         {

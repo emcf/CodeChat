@@ -27,7 +27,7 @@ namespace ChatUI
         // Basic variables
         public static string Username;
         public static string TexttoSend = "";
-        private static int EncryptKey = 29;
+        private static int EncryptKey = 5;
         public static bool InCodeMode = false;
         // Helps detect if the oldest message needs to be deleted if the screen is too cluttered
         public static int SpaceUsedinPanel = 15;
@@ -38,7 +38,6 @@ namespace ChatUI
         public static bool dragging;
         // Used for checking if the console has already welcomed user
         public static bool ConsoleSpoken = false;
-        public static bool NetworkData;
         // Regex for syntax highlighter
         public static Regex SyntaxKeywords =new Regex(@"\b(async|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|enum|event|explicit|extern|false|finally|fixed|for|foreach|goto|if|implicit|in|interface|internal|is|lock|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|ulong|unchecked|unsafe|ushort|using|virtual|volatile|while|public|new|lines|this)\b", RegexOptions.IgnoreCase);
         public static Regex ObjectKeywords = new Regex(@"\b(image|size|point|bitmap|var|font|string|int|bool|byte|char|class|decimal|double|float|namespace|object|uint|this)\b|long|sbyte", RegexOptions.IgnoreCase);
@@ -77,7 +76,6 @@ namespace ChatUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Encrypt("Welcome to the chat room.", EncryptKey);
             btnClose.FlatAppearance.BorderSize = 0;
             btnCode.FlatAppearance.BorderSize = 0;
             btnSend.FlatAppearance.BorderSize = 0;
@@ -85,8 +83,7 @@ namespace ChatUI
             ChatPanel.Hide();
             this.Size = new Size(484, 87);
             btnConnect.Location = new Point(12, 36);
-
-            // Add "Welcome to the chat room." encrypted by the key
+            // Add "Welcome to the chat room." encrypted
             listBox1.Items.Add(Encrypt("Welcome to the chat room.", EncryptKey));
             listBox1.SelectedIndex = 0;
             Sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -152,11 +149,11 @@ namespace ChatUI
                 rtbCode.SelectionColor = Color.FromArgb(255, 255, 255);
                 rtbCode.SelectionFont = new Font("Segoe UI", 10, FontStyle.Regular);
 
-                SpaceUsedinPanel += rctBox.Height + 15;
+                SpaceUsedinPanel += rctBox.Height + 7;
 
                 if (txtMessage.Contains("[Code]") && txtMessage.Contains("[/Code]"))
                 {
-                    #region Syntax Highlighter
+                    #region Regex Syntax Highlighter
                     // Select text from the begining
                     int selPos = rtbCode.SelectionStart;
 
@@ -329,36 +326,29 @@ namespace ChatUI
 
         private void MessageCallBack(IAsyncResult aResult)
         {
-            NetworkData = true;
-            // Collect data 
-            byte[] receivedData = new byte[1500];
-            receivedData = (byte[])aResult.AsyncState;
-
+            byte[] ReceivedData = new byte[1500];
+            ReceivedData = (byte[])aResult.AsyncState;
             // Convert Byte[] to string and decrypt
-            UTF8Encoding uEncoding = new UTF8Encoding();
-            ASCIIEncoding aEncoding = new ASCIIEncoding();
-            string receivedMessage = uEncoding.GetString(receivedData);
-
-            // Send text here, I haven't added any code to actually send text through a network
+            ASCIIEncoding AsciiEncoding = new ASCIIEncoding();
+            string receivedMessage = AsciiEncoding.GetString(ReceivedData);
+            // Ensure the text is also shown on our client as well
             MessageListAdd(receivedMessage);
-
             // Reset buffer
             Buffer = new byte[1500];
             Sock.BeginReceiveFrom(Buffer, 0, Buffer.Length, SocketFlags.None, ref Remote, new AsyncCallback(MessageCallBack), Buffer);
-
+            // Reload all messages
             RefreshChatPanel();
         }
+
         private async void btnConnect_Click(object sender, EventArgs e)
         {
             Connect cnct = new Connect();
             cnct.Show();
-
             // Get local IP address
             string localIP = GetIP();
             // Socket Set up
             Sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             Sock.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-
             // Bind Socket
             Local = new IPEndPoint(IPAddress.Parse(localIP), 3333);
             Sock.Bind(Local);
@@ -406,7 +396,6 @@ namespace ChatUI
             TexttoSend = Text;
             // If you aren't connected to yourself...
             // Convert text to 1500 byte array
-            NetworkData = false;
             UTF8Encoding uEncoding = new UTF8Encoding();
             ASCIIEncoding aEncoding = new ASCIIEncoding();
             byte[] sendingMessage = new byte[1500];
@@ -466,6 +455,5 @@ namespace ChatUI
             return Output;
         }
         #endregion
-
     }
 }
