@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+
 namespace ChatUI
 {
     public partial class Connect : Form
