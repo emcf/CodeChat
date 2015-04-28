@@ -4,4 +4,5 @@ Does it get better? Probably. This is just a project I worked on for a weekend o
 
 # Why is this here?
 ![Redundant Code](http://i.imgur.com/UtvzUiQ.png)
+
 It's here because I still haven't decided on UTF or Ascii.
