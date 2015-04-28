@@ -394,22 +394,22 @@ namespace ChatUI
         private void Send(string Text)
         {
             TexttoSend = Text;
-            // If you aren't connected to yourself...
             // Convert text to 1500 byte array
             UTF8Encoding uEncoding = new UTF8Encoding();
             ASCIIEncoding aEncoding = new ASCIIEncoding();
             byte[] sendingMessage = new byte[1500];
             var bytes = uEncoding.GetBytes(TexttoSend);
+
+            // If you aren't connected to yourself, write the message on your own client
+            if (!(RemoteIP == GetIP()))
+            {
+                listBox1.Items.Add(TexttoSend);
+            }
+
             try
             {
                 Sock.Send(bytes);
                 txtChat.Text = "";
-                /* If you aren't connected to yourself, write the message on your own client
-                if (!(RemoteIP == GetIP()))
-                {
-                    listBox1.Items.Add(TexttoSend);
-                }
-                 */
                 // Repaint the ChatPanel
                 this.Refresh();
             }
