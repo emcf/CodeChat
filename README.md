@@ -6,3 +6,7 @@ Does it get better? Probably. This is just a project I worked on for a weekend o
 ![Redundant Code](http://i.imgur.com/UtvzUiQ.png)
 
 It's here because I still haven't decided on UTF or Ascii.
+
+![Fix this](http://i.imgur.com/sLGRoy5.png)
+
+This is here because I am procrastinating from fixing it with other features like server lists and contacts.
