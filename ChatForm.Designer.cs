@@ -38,6 +38,7 @@ namespace ChatUI
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
             this.btnCode = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.ChatPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,9 +102,9 @@ namespace ChatUI
             this.btnConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConnect.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConnect.ForeColor = System.Drawing.Color.White;
-            this.btnConnect.Location = new System.Drawing.Point(88, -3);
+            this.btnConnect.Location = new System.Drawing.Point(88, -10);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(460, 41);
+            this.btnConnect.Size = new System.Drawing.Size(225, 41);
             this.btnConnect.TabIndex = 8;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = false;
@@ -137,12 +138,27 @@ namespace ChatUI
             this.btnCode.UseVisualStyleBackColor = false;
             this.btnCode.Click += new System.EventHandler(this.btnCode_Click);
             // 
+            // btnSettings
+            // 
+            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(149)))), ((int)(((byte)(87)))));
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.ForeColor = System.Drawing.Color.White;
+            this.btnSettings.Location = new System.Drawing.Point(314, -10);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(225, 41);
+            this.btnSettings.TabIndex = 11;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
             // ChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(68)))), ((int)(((byte)(89)))));
             this.ClientSize = new System.Drawing.Size(484, 556);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnCode);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnSend);
@@ -176,6 +192,7 @@ namespace ChatUI
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnCode;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btnSettings;
     }
 }
 

@@ -101,6 +101,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "a";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Connect_FormClosed);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Connect_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Connect_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Connect_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

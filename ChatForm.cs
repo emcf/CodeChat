@@ -11,6 +11,7 @@ using System.Text;
 using System.Management;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
 
 /*
 This chat program is designed for sending text, code, and images through a small
@@ -39,7 +40,7 @@ namespace ChatUI
         // Used for checking if the console has already welcomed user
         public static bool ConsoleSpoken = false;
         // Regex for syntax highlighter
-        public static Regex SyntaxKeywords =new Regex(@"\b(async|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|enum|event|explicit|extern|false|finally|fixed|for|foreach|goto|if|implicit|in|interface|internal|is|lock|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|ulong|unchecked|unsafe|ushort|using|virtual|volatile|while|public|new|lines|this)\b", RegexOptions.IgnoreCase);
+        public static Regex SyntaxKeywords = new Regex(@"\b(async|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|enum|event|explicit|extern|false|finally|fixed|for|foreach|goto|if|implicit|in|interface|internal|is|lock|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|ulong|unchecked|unsafe|ushort|using|virtual|volatile|while|public|new|lines|this)\b", RegexOptions.IgnoreCase);
         public static Regex ObjectKeywords = new Regex(@"\b(image|size|point|bitmap|var|font|string|int|bool|byte|char|class|decimal|double|float|namespace|object|uint|this)\b|long|sbyte", RegexOptions.IgnoreCase);
         public static Regex FunctionKeywords = new Regex(@"\b(.text|.items|.tostring|.location|.hide|.show|convert)\b", RegexOptions.IgnoreCase);
         // Variables for networking
@@ -49,6 +50,10 @@ namespace ChatUI
         public static byte[] Buffer;
         public static string RemoteIP;
         public static bool ConnectShown = false;
+        // Syntax Highlighting Colours
+        public static Color Syntax;
+        public static Color Objects;
+        public static Color Functions;
         #endregion
 
         #region Form's Round Corners
@@ -73,7 +78,22 @@ namespace ChatUI
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 2, 2));
             Username = GetManagementItem("SerialNumber", "Win32_BaseBoard") + GetManagementItem("ProcessorId", "Win32_Processor");
 
-            (new Colours()).Show();
+            Syntax = Color.FromArgb(0, 170, 170);
+            Objects = Color.FromArgb(255, 60, 200);
+            Functions = Color.FromArgb(210, 182, 20);
+
+            try
+            {
+                string[] Colours = File.ReadAllLines("Colours.txt");
+                Syntax = Color.FromArgb(Convert.ToInt32(Colours[0]));
+                Objects = Color.FromArgb(Convert.ToInt32(Colours[1]));
+                Functions = Color.FromArgb(Convert.ToInt32(Colours[2]));
+            }
+            catch
+            {
+                Message msg = new Message("Unable to read colour scheme", "Error");
+                msg.Show();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -82,9 +102,11 @@ namespace ChatUI
             btnCode.FlatAppearance.BorderSize = 0;
             btnSend.FlatAppearance.BorderSize = 0;
             btnConnect.FlatAppearance.BorderSize = 0;
+            btnSettings.FlatAppearance.BorderSize = 0;
             ChatPanel.Hide();
             this.Size = new Size(484, 87);
             btnConnect.Location = new Point(12, 36);
+            btnSettings.Location = new Point(247, 36);
             // Add "Welcome to the chat room." encrypted
             listBox1.Items.Add(Encrypt("Welcome to the chat room.", EncryptKey));
             listBox1.SelectedIndex = 0;
@@ -164,7 +186,7 @@ namespace ChatUI
                     {
                         rtbCode.Select(keyWordMatch.Index, keyWordMatch.Length);
                         // Change colours
-                        rtbCode.SelectionColor = Color.FromArgb(0, 170, 170);
+                        rtbCode.SelectionColor = Syntax;
                         rtbCode.SelectionFont = fntSyntaxHighlighter;
                     }
 
@@ -173,7 +195,7 @@ namespace ChatUI
                     {
                         rtbCode.Select(keyWordMatch.Index, keyWordMatch.Length);
                         // Change colours
-                        rtbCode.SelectionColor = Color.FromArgb(255, 60, 200);
+                        rtbCode.SelectionColor = Objects;
                         rtbCode.SelectionFont = fntSyntaxHighlighter;
                     }
 
@@ -182,7 +204,7 @@ namespace ChatUI
                     {
                         rtbCode.Select(keyWordMatch.Index, keyWordMatch.Length);
                         // Change colours
-                        rtbCode.SelectionColor = Color.FromArgb(210, 182, 20);
+                        rtbCode.SelectionColor = Functions;
                         rtbCode.SelectionFont = fntSyntaxHighlighter;
                     }
                     #endregion
@@ -374,6 +396,7 @@ namespace ChatUI
                 // Change the UI
                 this.Size = new Size(484, 616);
                 btnConnect.Hide();
+                btnSettings.Hide();
                 ChatPanel.Show();
                 lblTitle.Text = "Chatting in " + RemoteIP;
             }
@@ -455,6 +478,14 @@ namespace ChatUI
             }
 
             return Output;
+        }
+        #endregion
+
+        #region Settings Function
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            Settings stngs = new Settings();
+            stngs.Show();
         }
         #endregion
     }

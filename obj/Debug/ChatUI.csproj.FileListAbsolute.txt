@@ -59,4 +59,5 @@ C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Properties.Resour
 C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.csproj.GenerateResource.Cache
 C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.exe
 C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.pdb
-C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Colours.resources
+C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.csprojResolveAssemblyReference.cache
+C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Settings.resources
