@@ -34,7 +34,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbSyntaxR = new System.Windows.Forms.TrackBar();
             this.ChatPanel = new System.Windows.Forms.Panel();
+            this.txtAddContact = new System.Windows.Forms.TextBox();
+            this.txtAddContactIP = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lstContacts = new System.Windows.Forms.ListBox();
             this.UICoverPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.trackBar10 = new System.Windows.Forms.TrackBar();
+            this.trackBar11 = new System.Windows.Forms.TrackBar();
+            this.trackBar12 = new System.Windows.Forms.TrackBar();
+            this.trackBar13 = new System.Windows.Forms.TrackBar();
+            this.trackBar14 = new System.Windows.Forms.TrackBar();
+            this.trackBar15 = new System.Windows.Forms.TrackBar();
+            this.trackBar16 = new System.Windows.Forms.TrackBar();
+            this.trackBar17 = new System.Windows.Forms.TrackBar();
+            this.trackBar18 = new System.Windows.Forms.TrackBar();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.trackBar3 = new System.Windows.Forms.TrackBar();
@@ -53,23 +67,19 @@
             this.tbSyntaxB = new System.Windows.Forms.TrackBar();
             this.tbSyntaxG = new System.Windows.Forms.TrackBar();
             this.tmrColourChanger = new System.Windows.Forms.Timer(this.components);
-            this.lstContacts = new System.Windows.Forms.ListBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.txtAddContactIP = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.trackBar10 = new System.Windows.Forms.TrackBar();
-            this.trackBar11 = new System.Windows.Forms.TrackBar();
-            this.trackBar12 = new System.Windows.Forms.TrackBar();
-            this.trackBar13 = new System.Windows.Forms.TrackBar();
-            this.trackBar14 = new System.Windows.Forms.TrackBar();
-            this.trackBar15 = new System.Windows.Forms.TrackBar();
-            this.trackBar16 = new System.Windows.Forms.TrackBar();
-            this.trackBar17 = new System.Windows.Forms.TrackBar();
-            this.trackBar18 = new System.Windows.Forms.TrackBar();
-            this.txtAddContact = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tbSyntaxR)).BeginInit();
             this.ChatPanel.SuspendLayout();
             this.UICoverPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
@@ -87,16 +97,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbObjectsR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSyntaxB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSyntaxG)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar18)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -169,6 +169,59 @@
             this.ChatPanel.Size = new System.Drawing.Size(378, 331);
             this.ChatPanel.TabIndex = 15;
             // 
+            // txtAddContact
+            // 
+            this.txtAddContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(61)))), ((int)(((byte)(80)))));
+            this.txtAddContact.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAddContact.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddContact.ForeColor = System.Drawing.Color.White;
+            this.txtAddContact.Location = new System.Drawing.Point(201, 213);
+            this.txtAddContact.Multiline = true;
+            this.txtAddContact.Name = "txtAddContact";
+            this.txtAddContact.Size = new System.Drawing.Size(149, 23);
+            this.txtAddContact.TabIndex = 25;
+            this.txtAddContact.Text = "Contact";
+            // 
+            // txtAddContactIP
+            // 
+            this.txtAddContactIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(61)))), ((int)(((byte)(80)))));
+            this.txtAddContactIP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAddContactIP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddContactIP.ForeColor = System.Drawing.Color.White;
+            this.txtAddContactIP.Location = new System.Drawing.Point(201, 242);
+            this.txtAddContactIP.Multiline = true;
+            this.txtAddContactIP.Name = "txtAddContactIP";
+            this.txtAddContactIP.Size = new System.Drawing.Size(149, 23);
+            this.txtAddContactIP.TabIndex = 16;
+            this.txtAddContactIP.Text = "127.0.0.1";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(84)))), ((int)(((byte)(109)))));
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(201, 271);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(149, 33);
+            this.btnAdd.TabIndex = 24;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // lstContacts
+            // 
+            this.lstContacts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(32)))), ((int)(((byte)(60)))));
+            this.lstContacts.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstContacts.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lstContacts.ForeColor = System.Drawing.Color.White;
+            this.lstContacts.FormattingEnabled = true;
+            this.lstContacts.ItemHeight = 21;
+            this.lstContacts.Location = new System.Drawing.Point(201, 19);
+            this.lstContacts.Name = "lstContacts";
+            this.lstContacts.Size = new System.Drawing.Size(149, 189);
+            this.lstContacts.TabIndex = 16;
+            // 
             // UICoverPanel
             // 
             this.UICoverPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(53)))));
@@ -186,6 +239,113 @@
             this.UICoverPanel.Name = "UICoverPanel";
             this.UICoverPanel.Size = new System.Drawing.Size(34, 331);
             this.UICoverPanel.TabIndex = 23;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(68)))), ((int)(((byte)(89)))));
+            this.panel1.Controls.Add(this.trackBar10);
+            this.panel1.Controls.Add(this.trackBar11);
+            this.panel1.Controls.Add(this.trackBar12);
+            this.panel1.Controls.Add(this.trackBar13);
+            this.panel1.Controls.Add(this.trackBar14);
+            this.panel1.Controls.Add(this.trackBar15);
+            this.panel1.Controls.Add(this.trackBar16);
+            this.panel1.Controls.Add(this.trackBar17);
+            this.panel1.Controls.Add(this.trackBar18);
+            this.panel1.Location = new System.Drawing.Point(24, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(10, 331);
+            this.panel1.TabIndex = 24;
+            // 
+            // trackBar10
+            // 
+            this.trackBar10.Location = new System.Drawing.Point(184, 213);
+            this.trackBar10.Maximum = 255;
+            this.trackBar10.Name = "trackBar10";
+            this.trackBar10.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar10.Size = new System.Drawing.Size(45, 91);
+            this.trackBar10.TabIndex = 22;
+            this.trackBar10.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // trackBar11
+            // 
+            this.trackBar11.Location = new System.Drawing.Point(142, 213);
+            this.trackBar11.Maximum = 255;
+            this.trackBar11.Name = "trackBar11";
+            this.trackBar11.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar11.Size = new System.Drawing.Size(45, 91);
+            this.trackBar11.TabIndex = 21;
+            this.trackBar11.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // trackBar12
+            // 
+            this.trackBar12.Location = new System.Drawing.Point(101, 213);
+            this.trackBar12.Maximum = 255;
+            this.trackBar12.Name = "trackBar12";
+            this.trackBar12.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar12.Size = new System.Drawing.Size(45, 91);
+            this.trackBar12.TabIndex = 20;
+            this.trackBar12.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // trackBar13
+            // 
+            this.trackBar13.Location = new System.Drawing.Point(184, 116);
+            this.trackBar13.Maximum = 255;
+            this.trackBar13.Name = "trackBar13";
+            this.trackBar13.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar13.Size = new System.Drawing.Size(45, 91);
+            this.trackBar13.TabIndex = 19;
+            this.trackBar13.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // trackBar14
+            // 
+            this.trackBar14.Location = new System.Drawing.Point(142, 116);
+            this.trackBar14.Maximum = 255;
+            this.trackBar14.Name = "trackBar14";
+            this.trackBar14.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar14.Size = new System.Drawing.Size(45, 91);
+            this.trackBar14.TabIndex = 18;
+            this.trackBar14.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // trackBar15
+            // 
+            this.trackBar15.Location = new System.Drawing.Point(101, 116);
+            this.trackBar15.Maximum = 255;
+            this.trackBar15.Name = "trackBar15";
+            this.trackBar15.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar15.Size = new System.Drawing.Size(45, 91);
+            this.trackBar15.TabIndex = 17;
+            this.trackBar15.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // trackBar16
+            // 
+            this.trackBar16.Location = new System.Drawing.Point(184, 19);
+            this.trackBar16.Maximum = 255;
+            this.trackBar16.Name = "trackBar16";
+            this.trackBar16.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar16.Size = new System.Drawing.Size(45, 91);
+            this.trackBar16.TabIndex = 16;
+            this.trackBar16.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // trackBar17
+            // 
+            this.trackBar17.Location = new System.Drawing.Point(142, 19);
+            this.trackBar17.Maximum = 255;
+            this.trackBar17.Name = "trackBar17";
+            this.trackBar17.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar17.Size = new System.Drawing.Size(45, 91);
+            this.trackBar17.TabIndex = 15;
+            this.trackBar17.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // trackBar18
+            // 
+            this.trackBar18.Location = new System.Drawing.Point(101, 19);
+            this.trackBar18.Maximum = 255;
+            this.trackBar18.Name = "trackBar18";
+            this.trackBar18.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar18.Size = new System.Drawing.Size(45, 91);
+            this.trackBar18.TabIndex = 14;
+            this.trackBar18.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // trackBar1
             // 
@@ -362,166 +522,6 @@
             this.tmrColourChanger.Interval = 10;
             this.tmrColourChanger.Tick += new System.EventHandler(this.tmrColourChanger_Tick);
             // 
-            // lstContacts
-            // 
-            this.lstContacts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(32)))), ((int)(((byte)(60)))));
-            this.lstContacts.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lstContacts.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lstContacts.ForeColor = System.Drawing.Color.White;
-            this.lstContacts.FormattingEnabled = true;
-            this.lstContacts.ItemHeight = 21;
-            this.lstContacts.Location = new System.Drawing.Point(201, 19);
-            this.lstContacts.Name = "lstContacts";
-            this.lstContacts.Size = new System.Drawing.Size(149, 189);
-            this.lstContacts.TabIndex = 16;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(84)))), ((int)(((byte)(109)))));
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(201, 271);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(149, 33);
-            this.btnAdd.TabIndex = 24;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // txtAddContactIP
-            // 
-            this.txtAddContactIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(61)))), ((int)(((byte)(80)))));
-            this.txtAddContactIP.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAddContactIP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddContactIP.ForeColor = System.Drawing.Color.White;
-            this.txtAddContactIP.Location = new System.Drawing.Point(201, 242);
-            this.txtAddContactIP.Multiline = true;
-            this.txtAddContactIP.Name = "txtAddContactIP";
-            this.txtAddContactIP.Size = new System.Drawing.Size(149, 23);
-            this.txtAddContactIP.TabIndex = 16;
-            this.txtAddContactIP.Text = "127.0.0.1";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(68)))), ((int)(((byte)(89)))));
-            this.panel1.Controls.Add(this.trackBar10);
-            this.panel1.Controls.Add(this.trackBar11);
-            this.panel1.Controls.Add(this.trackBar12);
-            this.panel1.Controls.Add(this.trackBar13);
-            this.panel1.Controls.Add(this.trackBar14);
-            this.panel1.Controls.Add(this.trackBar15);
-            this.panel1.Controls.Add(this.trackBar16);
-            this.panel1.Controls.Add(this.trackBar17);
-            this.panel1.Controls.Add(this.trackBar18);
-            this.panel1.Location = new System.Drawing.Point(24, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(10, 331);
-            this.panel1.TabIndex = 24;
-            // 
-            // trackBar10
-            // 
-            this.trackBar10.Location = new System.Drawing.Point(184, 213);
-            this.trackBar10.Maximum = 255;
-            this.trackBar10.Name = "trackBar10";
-            this.trackBar10.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar10.Size = new System.Drawing.Size(45, 91);
-            this.trackBar10.TabIndex = 22;
-            this.trackBar10.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // trackBar11
-            // 
-            this.trackBar11.Location = new System.Drawing.Point(142, 213);
-            this.trackBar11.Maximum = 255;
-            this.trackBar11.Name = "trackBar11";
-            this.trackBar11.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar11.Size = new System.Drawing.Size(45, 91);
-            this.trackBar11.TabIndex = 21;
-            this.trackBar11.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // trackBar12
-            // 
-            this.trackBar12.Location = new System.Drawing.Point(101, 213);
-            this.trackBar12.Maximum = 255;
-            this.trackBar12.Name = "trackBar12";
-            this.trackBar12.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar12.Size = new System.Drawing.Size(45, 91);
-            this.trackBar12.TabIndex = 20;
-            this.trackBar12.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // trackBar13
-            // 
-            this.trackBar13.Location = new System.Drawing.Point(184, 116);
-            this.trackBar13.Maximum = 255;
-            this.trackBar13.Name = "trackBar13";
-            this.trackBar13.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar13.Size = new System.Drawing.Size(45, 91);
-            this.trackBar13.TabIndex = 19;
-            this.trackBar13.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // trackBar14
-            // 
-            this.trackBar14.Location = new System.Drawing.Point(142, 116);
-            this.trackBar14.Maximum = 255;
-            this.trackBar14.Name = "trackBar14";
-            this.trackBar14.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar14.Size = new System.Drawing.Size(45, 91);
-            this.trackBar14.TabIndex = 18;
-            this.trackBar14.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // trackBar15
-            // 
-            this.trackBar15.Location = new System.Drawing.Point(101, 116);
-            this.trackBar15.Maximum = 255;
-            this.trackBar15.Name = "trackBar15";
-            this.trackBar15.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar15.Size = new System.Drawing.Size(45, 91);
-            this.trackBar15.TabIndex = 17;
-            this.trackBar15.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // trackBar16
-            // 
-            this.trackBar16.Location = new System.Drawing.Point(184, 19);
-            this.trackBar16.Maximum = 255;
-            this.trackBar16.Name = "trackBar16";
-            this.trackBar16.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar16.Size = new System.Drawing.Size(45, 91);
-            this.trackBar16.TabIndex = 16;
-            this.trackBar16.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // trackBar17
-            // 
-            this.trackBar17.Location = new System.Drawing.Point(142, 19);
-            this.trackBar17.Maximum = 255;
-            this.trackBar17.Name = "trackBar17";
-            this.trackBar17.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar17.Size = new System.Drawing.Size(45, 91);
-            this.trackBar17.TabIndex = 15;
-            this.trackBar17.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // trackBar18
-            // 
-            this.trackBar18.Location = new System.Drawing.Point(101, 19);
-            this.trackBar18.Maximum = 255;
-            this.trackBar18.Name = "trackBar18";
-            this.trackBar18.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar18.Size = new System.Drawing.Size(45, 91);
-            this.trackBar18.TabIndex = 14;
-            this.trackBar18.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // txtAddContact
-            // 
-            this.txtAddContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(61)))), ((int)(((byte)(80)))));
-            this.txtAddContact.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAddContact.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddContact.ForeColor = System.Drawing.Color.White;
-            this.txtAddContact.Location = new System.Drawing.Point(201, 213);
-            this.txtAddContact.Multiline = true;
-            this.txtAddContact.Name = "txtAddContact";
-            this.txtAddContact.Size = new System.Drawing.Size(149, 23);
-            this.txtAddContact.TabIndex = 25;
-            this.txtAddContact.Text = "Contact";
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -535,6 +535,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Settings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings Form";
             this.Load += new System.EventHandler(this.Settings_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Settings_MouseDown);
@@ -545,6 +546,17 @@
             this.ChatPanel.PerformLayout();
             this.UICoverPanel.ResumeLayout(false);
             this.UICoverPanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
@@ -562,17 +574,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbObjectsR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSyntaxB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSyntaxG)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar18)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
