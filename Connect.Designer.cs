@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
-            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.lstContacts = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -51,7 +51,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(32)))), ((int)(((byte)(60)))));
-            this.btnClose.Location = new System.Drawing.Point(240, -4);
+            this.btnClose.Location = new System.Drawing.Point(240, -2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(28, 19);
             this.btnClose.TabIndex = 7;
@@ -64,7 +64,7 @@
             this.btnConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConnect.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConnect.ForeColor = System.Drawing.Color.White;
-            this.btnConnect.Location = new System.Drawing.Point(12, 70);
+            this.btnConnect.Location = new System.Drawing.Point(12, 147);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(256, 38);
             this.btnConnect.TabIndex = 1;
@@ -72,25 +72,27 @@
             this.btnConnect.UseVisualStyleBackColor = false;
             this.btnConnect.Click += new System.EventHandler(this.ButtonCode_Click);
             // 
-            // txtAddress
+            // lstContacts
             // 
-            this.txtAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(32)))), ((int)(((byte)(60)))));
-            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.ForeColor = System.Drawing.Color.White;
-            this.txtAddress.Location = new System.Drawing.Point(12, 42);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(256, 22);
-            this.txtAddress.TabIndex = 9;
+            this.lstContacts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(32)))), ((int)(((byte)(60)))));
+            this.lstContacts.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstContacts.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lstContacts.ForeColor = System.Drawing.Color.White;
+            this.lstContacts.FormattingEnabled = true;
+            this.lstContacts.ItemHeight = 21;
+            this.lstContacts.Location = new System.Drawing.Point(12, 33);
+            this.lstContacts.Name = "lstContacts";
+            this.lstContacts.Size = new System.Drawing.Size(256, 105);
+            this.lstContacts.TabIndex = 10;
             // 
             // Connect
             // 
             this.AcceptButton = this.btnConnect;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(100)))));
-            this.ClientSize = new System.Drawing.Size(280, 122);
-            this.Controls.Add(this.txtAddress);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(68)))), ((int)(((byte)(89)))));
+            this.ClientSize = new System.Drawing.Size(280, 197);
+            this.Controls.Add(this.lstContacts);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label1);
@@ -109,6 +111,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.ListBox lstContacts;
     }
 }

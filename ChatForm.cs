@@ -72,6 +72,8 @@ namespace ChatUI
             // Remove border from form and create a 2 pixel rounded indent around each corner.
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 2, 2));
             Username = GetManagementItem("SerialNumber", "Win32_BaseBoard") + GetManagementItem("ProcessorId", "Win32_Processor");
+
+            (new Colours()).Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)

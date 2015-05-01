@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,16 +19,32 @@ namespace ChatUI
             InitializeComponent();
             ChatForm.ConnectShown = true;
             btnConnect.FlatAppearance.BorderSize = 0;
-            txtAddress.Text = ChatForm.GetIP();
+
+            // Add contacts
+            lstContacts.Items.Add(ChatForm.GetIP());
+            try
+            {
+                foreach (string Contact in File.ReadAllLines("Contacts.txt"))
+                {
+                    lstContacts.Items.Add(Contact);
+                }
+            }
+            catch
+            {
+
+            }
         }
 
         private void ButtonCode_Click(object sender, EventArgs e)
         {
             try
             {
-                ChatForm.Remote = new IPEndPoint(IPAddress.Parse(txtAddress.Text), 3333);
+                // Get selected IP
+                string IP = lstContacts.GetItemText(lstContacts.SelectedItem);
+                // Connect
+                ChatForm.Remote = new IPEndPoint(IPAddress.Parse(IP), 3333);
                 ChatForm.Sock.Connect(ChatForm.Remote);
-                ChatForm.RemoteIP = txtAddress.Text;
+                ChatForm.RemoteIP = IP;
                 ChatForm.ConnectShown = true;
                 // Connect
                 this.Close();

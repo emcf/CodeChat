@@ -50,13 +50,13 @@ C:\Users\Emmett\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Message.resource
 C:\Users\Emmett\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Properties.Resources.resources
 C:\Users\Emmett\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.csproj.GenerateResource.Cache
 C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\bin\Debug\ChatUI.exe.config
-C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.exe
-C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.pdb
 C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\bin\Debug\ChatUI.exe
 C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\bin\Debug\ChatUI.pdb
-C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.csprojResolveAssemblyReference.cache
 C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Connect.resources
 C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.ChatForm.resources
 C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Message.resources
 C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Properties.Resources.resources
 C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.csproj.GenerateResource.Cache
+C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.exe
+C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.pdb
+C:\Users\Owner\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Colours.resources
