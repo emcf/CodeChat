@@ -1,7 +1,5 @@
 **/bin/*
 **/obj/*
-TestResults/*
+Properties*
 *.suo
 *.user
-build/output/*
-_ReSharper*
