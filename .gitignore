@@ -1,5 +1,5 @@
-**/bin/*
-**/obj/*
-Properties*
+bin/*
+obj/*
 *.suo
 *.user
+*.resx
