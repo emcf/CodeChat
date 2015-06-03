@@ -99,7 +99,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Connect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "a";
+            this.Text = "Connect";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Connect_FormClosed);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Connect_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Connect_MouseMove);
