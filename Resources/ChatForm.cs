@@ -411,11 +411,7 @@ namespace ChatUI
         #region Send Button
         private void btnSend_Click_1(object sender, EventArgs e)
         {
-            if (txtChat.Text == "")
-            {
-
-            }
-            else
+            if (!IsNullOrWhiteSpace(txtChat.Text))
             {
                 Send(Encrypt(txtChat.Text, EncryptKey));
             }
