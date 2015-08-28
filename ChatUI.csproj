@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -53,39 +53,44 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Designer\Settings.Designer.cs">
+    <Compile Include="Resources\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\Connect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Designer\Connect.Designer.cs">
+    <Compile Include="Resources\Connect.Designer.cs">
       <DependentUpon>Connect.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\ChatForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Designer\ChatForm.Designer.cs">
+    <Compile Include="Resources\ChatForm.Designer.cs">
       <DependentUpon>ChatForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\Message.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Designer\Message.Designer.cs">
+    <Compile Include="Resources\Message.Designer.cs">
       <DependentUpon>Message.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\Program.cs" />
@@ -108,7 +113,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Designer\Resources.Designer.cs">
+    <Compile Include="Resources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>

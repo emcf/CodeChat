@@ -3,21 +3,20 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using System.Globalization;
 using System.Net;
 using System.Diagnostics;
 using System.Net.Sockets;
 using System.Text;
 using System.Management;
-using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
+using System.Collections.Generic;
 
 /*
 This chat program is designed for sending text, code, and images through a small
 encrypted Peer-to-peer network. This is the unfinished GUI for the client.
 The code is fully commented and organized with region tags.
-Coded & designed by Emmett McFarlane
+Programmed & designed by Emmett McFarlane
 */
 
 namespace ChatUI
@@ -25,25 +24,18 @@ namespace ChatUI
     public partial class ChatForm : Form
     {
         #region Public Variables
-        // Basic variables
-        public static string Username;
-        public static string TexttoSend = "";
-        private static int EncryptKey = 5;
-        public static bool InCodeMode = false;
-        // Helps detect if the oldest message needs to be deleted if the screen is too cluttered
-        public static int SpaceUsedinPanel = 15;
-        // Used for drawing the rectangle behind messages
-        public static Rectangle TextRect;
+        private string Username, TexttoSend = "";
+        private List<string> Messages = new List<string>();
+        private int EncryptKey = 5;
+        private int SpaceUsedinPanel = 15;
         // Used for dragging the form
-        public static Point start_point;
-        public static bool dragging;
-        // Used for checking if the console has already welcomed user
-        public static bool ConsoleSpoken = false;
+        private Point StartPoint;
+        private bool IsDragging;
         // Regex for syntax highlighter
-        public static Regex SyntaxKeywords = new Regex(@"\b(async|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|enum|event|explicit|extern|false|finally|fixed|for|foreach|goto|if|implicit|in|interface|internal|is|lock|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|ulong|unchecked|unsafe|ushort|using|virtual|volatile|while|public|new|lines|this)\b", RegexOptions.IgnoreCase);
-        public static Regex ObjectKeywords = new Regex(@"\b(image|size|point|bitmap|var|font|string|int|bool|byte|char|class|decimal|double|float|namespace|object|uint|this)\b|long|sbyte", RegexOptions.IgnoreCase);
-        public static Regex FunctionKeywords = new Regex(@"\b(.text|.items|.tostring|.location|.hide|.show|convert)\b", RegexOptions.IgnoreCase);
-        // Variables for networking
+        public Regex SyntaxKeywords = new Regex(@"\b(async|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|enum|event|explicit|extern|false|finally|fixed|for|foreach|goto|if|implicit|in|interface|internal|is|lock|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|ulong|unchecked|unsafe|ushort|using|virtual|volatile|while|public|new|lines|this)\b", RegexOptions.IgnoreCase),
+        ObjectKeywords = new Regex(@"\b(image|size|point|bitmap|var|font|string|int|bool|byte|char|class|decimal|double|float|namespace|object|uint|this)\b|long|sbyte", RegexOptions.IgnoreCase),
+        FunctionKeywords = new Regex(@"\b(.text|.items|.tostring|.location|.hide|.show|convert)\b", RegexOptions.IgnoreCase);
+        // Networking variables
         public static Socket Sock;
         public static EndPoint Local;
         public static EndPoint Remote;
@@ -51,9 +43,7 @@ namespace ChatUI
         public static string RemoteIP;
         public static bool ConnectShown = false;
         // Syntax Highlighting Colours
-        public static Color Syntax;
-        public static Color Objects;
-        public static Color Functions;
+        public static Color Syntax, Objects, Functions;
         #endregion
 
         #region Form's Round Corners
@@ -91,8 +81,8 @@ namespace ChatUI
             }
             catch
             {
-                Message msg = new Message("Unable to read colour scheme", "Error");
-                msg.Show();
+                Message Msg = new Message("Unable to read colour scheme", "Error");
+                Msg.Show();
             }
         }
 
@@ -108,8 +98,7 @@ namespace ChatUI
             btnConnect.Location = new Point(12, 36);
             btnSettings.Location = new Point(247, 36);
             // Add "Welcome to the chat room." encrypted
-            listBox1.Items.Add(Encrypt("Welcome to the chat room.", EncryptKey));
-            listBox1.SelectedIndex = 0;
+            Messages.Add(Encrypt("Welcome to the chat room.", EncryptKey));
             Sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             Sock.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
         }
@@ -120,7 +109,7 @@ namespace ChatUI
         {
             if (SpaceUsedinPanel >= 400)
             {
-                listBox1.Items.Clear(); // Fix this later
+                Messages.Remove(Messages[0]);
                 ChatPanel.Controls.Clear();
                 ChatPanel.Invalidate();
             }
@@ -133,10 +122,9 @@ namespace ChatUI
             int intWidth = 468;
             SpaceUsedinPanel = 15;
 
-            for (int i = 0; i < listBox1.Items.Count; i++)
+            for (int i = 0; i < Messages.Count; i++)
             {
-                listBox1.SelectedIndex = i;
-                string txtMessage = Decrypt(listBox1.SelectedItem.ToString(), EncryptKey);
+                string txtMessage = Decrypt(Messages[i], EncryptKey);
                 SizeF SizeofMessage = e.Graphics.MeasureString(txtMessage, fntText);
                 int intHeight = Convert.ToInt32(SizeofMessage.Width) / intWidth;
 
@@ -153,7 +141,7 @@ namespace ChatUI
 
                 UIComponents.DrawRoundedRectangle(e.Graphics, clrMessage, rctBox, 1, UIComponents.RoundedCorners.All);
 
-                string txtCode = txtMessage.Replace("[Code]", "").Replace("[/Code]", "");
+                string Code = txtMessage.Replace("[Code]", "").Replace("[/Code]", "");
 
                 rtbCode.Click += rtbCode_Click;
                 rtbCode.TabIndex = 3;
@@ -166,7 +154,7 @@ namespace ChatUI
                 rtbCode.Location = rctMessage.Location;
                 rtbCode.Size = new Size(rctMessage.Size.Width - 15, rctMessage.Size.Height - 10);
                 rtbCode.ReadOnly = true;
-                rtbCode.Text = txtCode;
+                rtbCode.Text = Code;
                 ChatPanel.Controls.Add(rtbCode);
 
                 rtbCode.SelectAll();
@@ -213,61 +201,57 @@ namespace ChatUI
         }
         #endregion
 
-        #region Clickable Links
+        #region Clickable Links (Being reworked due to a list change)
         private void rtbCode_Click(object sender, EventArgs e)
         {
-            if (IsUrl(Decrypt(listBox1.SelectedItem.ToString(), EncryptKey).Split(' ')[0]))
+            /*if (IsUrl())
             {
-                Process.Start(Decrypt(listBox1.SelectedItem.ToString(), EncryptKey).Split(' ')[0]);
-            }
+                Process.Start(Decrypt(lstMessages.SelectedItem.ToString(), EncryptKey).Split(' ')[0]);
+            }*/
         }
         #endregion
 
         #region Movable Form
         private void ChatForm_MouseDown(object sender, MouseEventArgs e)
         {
-            dragging = true;
-            start_point = new Point(e.X, e.Y);
+            IsDragging = true;
+            StartPoint = new Point(e.X, e.Y);
         }
 
         private void ChatForm_MouseMove(object sender, MouseEventArgs e)
         {
-            bool flag = !dragging;
+            bool flag = !IsDragging;
             if (!flag)
             {
                 Point p = base.PointToScreen(e.Location);
-                base.Location = new Point(p.X - start_point.X, p.Y - start_point.Y);
+                base.Location = new Point(p.X - StartPoint.X, p.Y - StartPoint.Y);
             }
         }
 
         private void ChatForm_MouseUp(object sender, MouseEventArgs e)
         {
-            dragging = false;
+            IsDragging = false;
         }
         #endregion
 
         #region Detect URLs
-
         private bool IsUrl(string url)
         {
-            bool result = false;
-
             try
             {
                 Uri uri = new Uri(url);
                 if (uri.Scheme == "http" || uri.Scheme == "https")
                 {
-                    result = true;
+                    return true;
                 }
             }
             catch
             {
-                
+                return false;
             }
 
-            return result;
+            return false;
         }
-
         #endregion
 
         #region Hardware Properties
@@ -317,29 +301,14 @@ namespace ChatUI
             return "Error";
         }
 
-        delegate void SetTextCallback(string text);
-
-        private void MessageListAdd(string TextToAdd)
-        {
-            if (this.listBox1.InvokeRequired)
-            {
-                SetTextCallback d = new SetTextCallback(MessageListAdd);
-                this.Invoke(d, new object[] { TextToAdd });
-            }
-            else
-            {
-                listBox1.Items.Add(TextToAdd);
-            }
-        }
-
         delegate void PanelRefresh();
 
         private void RefreshChatPanel()
         {
+            // Allows panel refreshing from the networking thread
             if (this.ChatPanel.InvokeRequired)
             {
-                PanelRefresh d = new PanelRefresh(RefreshChatPanel);
-                this.Invoke(d);
+                this.Invoke(new PanelRefresh(RefreshChatPanel));
             }
             else
             {
@@ -352,11 +321,9 @@ namespace ChatUI
         {
             byte[] ReceivedData = new byte[1500];
             ReceivedData = (byte[])aResult.AsyncState;
-            // Convert Byte[] to string and decrypt
             ASCIIEncoding AsciiEncoding = new ASCIIEncoding();
             string receivedMessage = AsciiEncoding.GetString(ReceivedData);
-            // Ensure the text is also shown on our client as well
-            MessageListAdd(receivedMessage);
+            Messages.Add(receivedMessage);
             // Reset buffer
             Buffer = new byte[1500];
             Sock.BeginReceiveFrom(Buffer, 0, Buffer.Length, SocketFlags.None, ref Remote, new AsyncCallback(MessageCallBack), Buffer);
@@ -366,15 +333,15 @@ namespace ChatUI
 
         private async void btnConnect_Click(object sender, EventArgs e)
         {
-            Connect cnct = new Connect();
-            cnct.Show();
+            Connect Cnct = new Connect();
+            Cnct.Show();
             // Get local IP address
             string localIP = GetIP();
             // Socket Set up
             Sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             Sock.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             // Bind Socket
-            Local = new IPEndPoint(IPAddress.Parse(localIP), 3333);
+            Local = new IPEndPoint(IPAddress.Parse(localIP), 80);
             Sock.Bind(Local);
 
             // Wait until Connect.cs is closed
@@ -386,7 +353,7 @@ namespace ChatUI
             try
             {
                 // Connect
-                Remote = new IPEndPoint(IPAddress.Parse(RemoteIP), 3333);
+                Remote = new IPEndPoint(IPAddress.Parse(RemoteIP), 80);
                 Sock.Connect(Remote);
 
                 // Listening to Port
@@ -402,8 +369,8 @@ namespace ChatUI
             }
             catch
             {
-                Message m = new Message("Unable to Connect", "Continue");
-                m.Show();
+                Message Msg = new Message("Unable to Connect", "Continue");
+                Msg.Show();
             }
         }
         #endregion
@@ -421,22 +388,20 @@ namespace ChatUI
         #region Send Function
         private void Send(string Text)
         {
-            TexttoSend = Text;
-            // Convert text to 1500 byte array
             UTF8Encoding uEncoding = new UTF8Encoding();
-            ASCIIEncoding aEncoding = new ASCIIEncoding();
+            // ASCIIEncoding aEncoding = new ASCIIEncoding();
             byte[] sendingMessage = new byte[1500];
-            var bytes = uEncoding.GetBytes(TexttoSend);
+            var Bytes = uEncoding.GetBytes(Text);
 
             // If you aren't connected to yourself, write the message on your own client
             if (!(RemoteIP == GetIP()))
             {
-                listBox1.Items.Add(TexttoSend);
+                Messages.Add(Text);
             }
 
             try
             {
-                Sock.Send(bytes);
+                Sock.Send(Bytes);
                 txtChat.Text = "";
                 // Repaint the ChatPanel
                 this.Refresh();
@@ -471,13 +436,13 @@ namespace ChatUI
 
         private string Decrypt(string Input, int Key)
         {
-            string[] test = Input.Split(' ');
+            string[] Characters = Input.Split(' ');
             string Output = "";
             // XOR each encrypted character value by the Key
-            for (int i = 0; i < test.Length - 1; i++)
+            for (int i = 0; i < Characters.Length - 1; i++)
             {
-                test[i] = test[i].Replace(" ", "");
-                Output += Convert.ToChar(Convert.ToInt32(test[i]) ^ Key);
+                Characters[i] = Characters[i].Replace(" ", "");
+                Output += Convert.ToChar(Convert.ToInt32(Characters[i]) ^ Key);
             }
 
             return Output;
@@ -487,8 +452,8 @@ namespace ChatUI
         #region Settings Function
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            Settings stngs = new Settings();
-            stngs.Show();
+            Settings Stngs = new Settings();
+            Stngs.Show();
         }
         #endregion
     }

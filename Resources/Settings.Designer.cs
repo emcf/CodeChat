@@ -519,7 +519,7 @@
             // 
             // tmrColourChanger
             // 
-            this.tmrColourChanger.Interval = 10;
+            this.tmrColourChanger.Interval = 50;
             this.tmrColourChanger.Tick += new System.EventHandler(this.tmrColourChanger_Tick);
             // 
             // Settings

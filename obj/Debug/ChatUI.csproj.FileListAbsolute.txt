@@ -1,0 +1,11 @@
+C:\Users\emmet_000\Documents\GitHub\P2P-Code-Chat\bin\Debug\ChatUI.exe.config
+C:\Users\emmet_000\Documents\GitHub\P2P-Code-Chat\bin\Debug\ChatUI.exe
+C:\Users\emmet_000\Documents\GitHub\P2P-Code-Chat\bin\Debug\ChatUI.pdb
+C:\Users\emmet_000\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Settings.resources
+C:\Users\emmet_000\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Connect.resources
+C:\Users\emmet_000\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.ChatForm.resources
+C:\Users\emmet_000\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Message.resources
+C:\Users\emmet_000\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.Properties.Resources.resources
+C:\Users\emmet_000\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.csproj.GenerateResource.Cache
+C:\Users\emmet_000\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.exe
+C:\Users\emmet_000\Documents\GitHub\P2P-Code-Chat\obj\Debug\ChatUI.pdb

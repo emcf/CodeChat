@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -15,8 +9,8 @@ namespace ChatUI
     {
         Color Syntax, Objects, Functions;
         // Used for dragging the form
-        public static Point start_point;
-        public static bool dragging;
+        public static Point StartPoint;
+        public static bool Dragging;
 
         public Settings()
         {
@@ -32,6 +26,7 @@ namespace ChatUI
         private void tmrColourChanger_Tick(object sender, EventArgs e)
         {
             // A timer is the most responsive and clean solution to the colour changes.
+            // Using events to track slider changes is simpler but inferior.
 
             Syntax = Color.FromArgb(tbSyntaxR.Value, tbSyntaxG.Value, tbSyntaxB.Value);
             tbSyntaxR.BackColor = Syntax;
@@ -63,8 +58,8 @@ namespace ChatUI
             }
             catch
             {
-                Message msg = new Message("Unable to write colour scheme", "Error");
-                msg.Show();
+                Message Msg = new Message("Unable to write colour scheme", "Error");
+                Msg.Show();
             }
         }
 
@@ -82,34 +77,43 @@ namespace ChatUI
            }
            catch
            {
-               Message msg = new Message("Unable to read Contacts.txt", "Error");
+               Message Msg = new Message("Unable to read Contacts.txt", "Continue");
+               Msg.Show();
            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            File.WriteAllText("Contacts.txt", File.ReadAllText("Contacts.txt") + Environment.NewLine + txtAddContact.Text + "					-" + txtAddContactIP.Text);
+            try
+            {
+                File.WriteAllText("Contacts.txt", File.ReadAllText("Contacts.txt") + Environment.NewLine + txtAddContact.Text + "					-" + txtAddContactIP.Text);
+            }
+            catch
+            {
+                Message Msg = new Message("Unable to write to Contacts.txt", "Continue");
+                Msg.Show();
+            }
         }
 
         private void Settings_MouseDown(object sender, MouseEventArgs e)
         {
-            dragging = true;
-            start_point = new Point(e.X, e.Y);
+            Dragging = true;
+            StartPoint = new Point(e.X, e.Y);
         }
 
         private void Settings_MouseMove(object sender, MouseEventArgs e)
         {
-            bool flag = !dragging;
+            bool flag = !Dragging;
             if (!flag)
             {
                 Point p = base.PointToScreen(e.Location);
-                base.Location = new Point(p.X - start_point.X, p.Y - start_point.Y);
+                base.Location = new Point(p.X - StartPoint.X, p.Y - StartPoint.Y);
             }
         }
 
         private void Settings_MouseUp(object sender, MouseEventArgs e)
         {
-            dragging = false;
+            Dragging = false;
         }
 
     }

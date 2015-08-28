@@ -31,7 +31,6 @@ namespace ChatUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatForm));
             this.ChatPanel = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtChat = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
@@ -39,26 +38,16 @@ namespace ChatUI
             this.btnSend = new System.Windows.Forms.Button();
             this.btnCode = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
-            this.ChatPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ChatPanel
             // 
             this.ChatPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(53)))));
-            this.ChatPanel.Controls.Add(this.listBox1);
             this.ChatPanel.Location = new System.Drawing.Point(0, 37);
             this.ChatPanel.Name = "ChatPanel";
             this.ChatPanel.Size = new System.Drawing.Size(485, 403);
             this.ChatPanel.TabIndex = 2;
             this.ChatPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ChatPanel_Paint);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(521, 156);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(124, 316);
-            this.listBox1.TabIndex = 5;
             // 
             // lblTitle
             // 
@@ -171,12 +160,11 @@ namespace ChatUI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChatForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chat Form";
+            this.Text = "ChatUI";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ChatForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChatForm_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ChatForm_MouseUp);
-            this.ChatPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,7 +179,6 @@ namespace ChatUI
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnCode;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btnSettings;
     }
 }
